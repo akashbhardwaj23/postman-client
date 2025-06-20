@@ -74,18 +74,18 @@ export default function HistoryListClient ({
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
+    <div className="bg-white p-10 rounded-[40px] shadow-xl">
       {isLoading ? (
-        <p>Loading history...</p>
+        <p className='text-neutral-600'>Loading history...</p>
       ) : history.length === 0 ? (
-        <p>No request history found.</p>
+        <p className='text-neutral-600'>No request history found.</p>
       ) : (
         <>
           <ul className="space-y-3">
             {history.map((item) => (
               <li
                 key={item.id}
-                className="bg-gray-50 p-4 rounded-md border border-gray-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2"
+                className="bg-neutral-50 p-4 rounded-[24px] border border-neutral-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2"
               >
                 <div className="flex-1">
                   <div className="flex items-center space-x-2">
@@ -95,27 +95,27 @@ export default function HistoryListClient ({
                           ? 'bg-green-100 text-green-800'
                           : item.statusCode && (item.statusCode >= 400 || item.statusCode === 0)
                           ? 'bg-red-100 text-red-800'
-                          : 'bg-gray-100 text-gray-800'
+                          : 'bg-gray-100 text-neutral-800'
                       }`}
                     >
                       {item.method} {item.statusCode ? `(${item.statusCode})` : ''}
                     </span>
-                    <span className="text-sm text-gray-500 truncate max-w-[calc(100%-120px)]">
+                    <span className="text-sm text-neutral-600 truncate max-w-[calc(100%-120px)]">
                       {new Date(item.timestamp).toLocaleString()}
                     </span>
                   </div>
-                  <p className="text-sm font-medium text-blue-700 break-all mt-1">{item.url}</p>
+                  <p className="text-sm font-medium text-orange-600 break-all mt-1">{item.url}</p>
                 </div>
                 <div className="flex space-x-2 mt-2 sm:mt-0">
                   <button
                     onClick={() => onSelectHistoryItem(item.id)}
-                    className="px-3 py-1 bg-blue-500 text-white text-sm rounded-md hover:bg-blue-600"
+                    className="px-3 py-2 bg-gradient-to-r from-orange-400 to-orange-600 text-white text-sm rounded-md cursor-pointer hover:bg-none hover:bg-orange-600"
                   >
                     Load
                   </button>
                   <button
                     onClick={() => handleDelete(item.id)}
-                    className="px-3 py-1 bg-red-500 text-white text-sm rounded-md hover:bg-red-600"
+                    className="px-3 py-2 bg-red-500 text-white text-sm rounded-md cursor-pointer hover:bg-red-600"
                   >
                     Delete
                   </button>

@@ -200,7 +200,7 @@ export default function HomePage() {
         <h2 className="text-2xl font-bold text-neutral-700 font-mono">Request History</h2>
         {isHistoryLoading ? (
           <div className="bg-white p-6 rounded-lg shadow-md flex items-center justify-center min-h-[200px]">
-            <p className="text-gray-500">Loading history...</p>
+            <p className="text-neutral-600">Loading history...</p>
           </div>
         ) : (
           <HistoryListClient
