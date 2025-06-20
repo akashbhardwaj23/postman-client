@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "mikro-orm": "mikro-orm",
+    "db:init": "mikro-orm migration:create --initial",
+    "db:up": "mikro-orm migration:up",
+    "db:fresh": "mikro-orm database:recreate --fresh --seed"
   },
   "dependencies": {
     "@mikro-orm/cli": "^6.4.16",
