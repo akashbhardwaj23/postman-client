@@ -11,7 +11,7 @@ interface ResponseDisplayProps {
   } | null;
 }
 
-const ResponseDisplay: React.FC<ResponseDisplayProps> = ({ response }) => {
+export default function ResponseDisplay ({ response } : ResponseDisplayProps) {
   const [activeTab, setActiveTab] = useState<'body' | 'headers'>('body');
   const [formattedBody, setFormattedBody] = useState<string>('');
 
@@ -101,5 +101,3 @@ const ResponseDisplay: React.FC<ResponseDisplayProps> = ({ response }) => {
     </div>
   );
 };
-
-export default ResponseDisplay;

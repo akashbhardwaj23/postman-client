@@ -17,10 +17,10 @@ interface RequestFormProps {
   }) => void;
 }
 
-const RequestForm: React.FC<RequestFormProps> = ({
+export default function RequestForm({
   initialRequest,
   onSendRequest,
-}) => {
+} : RequestFormProps){
   const [method, setMethod] = useState(initialRequest?.method || 'GET');
   const [url, setUrl] = useState(initialRequest?.url || '');
   const [headers, setHeaders] = useState(
@@ -159,5 +159,3 @@ const RequestForm: React.FC<RequestFormProps> = ({
     </form>
   );
 };
-
-export default RequestForm;

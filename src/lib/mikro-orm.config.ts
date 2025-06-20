@@ -31,14 +31,6 @@ const config: Options = {
       },
     },
   },
-
-  // This is typically needed for reflecting metadata from TypeScript classes
-  // if you're not seeing your entities correctly.
-  // metadataProvider: require('@mikro-orm/reflection').ReflectionMetadataProvider,
-
-  // Enable request context for production, recommended for handling requests per transaction
-  // MikroORM docs: https://mikro-orm.io/docs/identity-map#request-context
-  // registerRequestContext: false, // Set to false if you handle EntityManager manually with fork()
 };
 
 export default config;
