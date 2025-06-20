@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
   if (!orm) {
     return NextResponse.json({ message: 'Database not initialized' }, { status: 500 });
   }
-  const em = orm.em.fork(); // Fork EntityManager for the request context
+  const em = orm.em.fork();
 
   const { searchParams } = new URL(req.url);
   const page = parseInt(searchParams.get('page') || '1');
