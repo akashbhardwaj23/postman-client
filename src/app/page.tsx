@@ -183,10 +183,10 @@ export default function HomePage() {
   );
 
   return (
-    <div className="container mx-auto p-4 md:grid md:grid-cols-2 gap-8 min-h-screen bg-gray-100">
+    <div className="container mx-auto p-10 md:grid md:grid-cols-2 gap-8 min-h-screen bg-gray-100">
       <div className="flex flex-col gap-6">
-        <h1 className="text-3xl font-extrabold text-gray-800 mb-2">
-          ⚡ REST Client
+        <h1 className="text-3xl font-extrabold text-neutral-800 mb-2 font-mono">
+          Postman REST Client
         </h1>
         <RequestForm
           initialRequest={currentRequest}
@@ -197,7 +197,7 @@ export default function HomePage() {
       </div>
 
       <div className="flex flex-col gap-6 mt-8 md:mt-0">
-        <h2 className="text-2xl font-bold text-gray-700">Request History</h2>
+        <h2 className="text-2xl font-bold text-neutral-700 font-mono">Request History</h2>
         {isHistoryLoading ? (
           <div className="bg-white p-6 rounded-lg shadow-md flex items-center justify-center min-h-[200px]">
             <p className="text-gray-500">Loading history...</p>

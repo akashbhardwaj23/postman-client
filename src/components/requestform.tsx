@@ -81,16 +81,16 @@ export default function RequestForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 bg-white p-6 rounded-lg shadow-md">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4 bg-white p-6 rounded-[40px] shadow-xl">
       <div>
-        <label htmlFor="method" className="block text-sm font-medium text-gray-700">
+        <label htmlFor="method" className="block text-sm font-semibold text-orange-600">
           Method
         </label>
         <select
           id="method"
           value={method}
           onChange={(e) => setMethod(e.target.value)}
-          className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
+          className="mt-1 block w-full px-2 pr-10 py-2 text-neutral-700 border border-neutral-300 placeholder:text-neutral-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
         >
           <option>GET</option>
           <option>POST</option>
@@ -103,7 +103,7 @@ export default function RequestForm({
       </div>
 
       <div>
-        <label htmlFor="url" className="block text-sm font-medium text-gray-700">
+        <label htmlFor="url" className="block text-sm font-semibold text-orange-600">
           URL
         </label>
         <input
@@ -113,12 +113,12 @@ export default function RequestForm({
           onChange={(e) => setUrl(e.target.value)}
           placeholder="https://api.example.com/data"
           required
-          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          className="mt-1 block w-full border text-neutral-600 border-gray-300 rounded-md shadow-sm py-2 px-3 placeholder:text-neutral-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
         />
       </div>
 
       <div>
-        <label htmlFor="headers" className="block text-sm font-medium text-gray-700">
+        <label htmlFor="headers" className="block text-sm font-semibold text-orange-600">
           Headers (JSON)
         </label>
         <textarea
@@ -126,7 +126,7 @@ export default function RequestForm({
           value={headers}
           onChange={(e) => setHeaders(e.target.value)}
           rows={5}
-          className={`mt-1 block w-full border ${headerError ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm font-mono`}
+          className={`mt-1 block w-full text-neutral-600 border ${headerError ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm font-mono`}
           placeholder='{\n  "Content-Type": "application/json"\n}'
         ></textarea>
         {headerError && <p className="text-red-500 text-xs mt-1">{headerError}</p>}
@@ -134,7 +134,7 @@ export default function RequestForm({
 
       {['POST', 'PUT', 'PATCH'].includes(method.toUpperCase()) && (
         <div>
-          <label htmlFor="body" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="body" className="block text-sm font-semibold text-orange-600">
             Body (JSON or Text)
           </label>
           <textarea
@@ -142,7 +142,7 @@ export default function RequestForm({
             value={body}
             onChange={(e) => setBody(e.target.value)}
             rows={8}
-            className={`mt-1 block w-full border ${bodyError ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm font-mono`}
+            className={`mt-1 block w-full border ${bodyError ? 'border-red-500' : 'border-gray-300'} text-neutral-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm font-mono`}
             placeholder='{\n  "name": "New Item",\n  "value": 123\n}'
           ></textarea>
           {bodyError && <p className="text-red-500 text-xs mt-1">{bodyError}</p>}
@@ -151,7 +151,7 @@ export default function RequestForm({
 
       <button
         type="submit"
-        className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
+        className="mt-4 w-full bg-gradient-to-r from-orange-400 to-orange-600 hover:bg-orange-300 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
         disabled={isSending}
       >
         {isSending ? 'Sending...' : 'Send Request'}
