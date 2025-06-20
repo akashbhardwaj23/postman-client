@@ -29,7 +29,7 @@ export default function ResponseDisplay ({ response } : ResponseDisplayProps) {
 
   if (!response) {
     return (
-      <div className="bg-white p-6 rounded-lg shadow-md min-h-[200px] flex items-center justify-center text-gray-500">
+      <div className="bg-white p-6 rounded-[40px] shadow-xl min-h-[200px] flex items-center justify-center text-neutral-600">
         No response yet.
       </div>
     );
@@ -42,10 +42,10 @@ export default function ResponseDisplay ({ response } : ResponseDisplayProps) {
     : 'text-gray-600';
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
-      <h3 className="text-lg font-semibold mb-2">Response</h3>
+    <div className="bg-white p-6 rounded-[40px] shadow-xl">
+      <h3 className="text-lg font-semibold mb-2 text-orange-600">Response</h3>
       <div className="flex items-center space-x-4 mb-4">
-        <span className={`text-xl font-bold ${statusCodeColor}`}>
+        <span className={`text-sm font-bold ${statusCodeColor}`}>
           Status: {response.statusCode}
         </span>
         {response.isError && (
@@ -53,14 +53,14 @@ export default function ResponseDisplay ({ response } : ResponseDisplayProps) {
         )}
       </div>
 
-      <div className="border-b border-gray-200">
+      <div className="border-b border-neutral-400">
         <nav className="-mb-px flex space-x-8" aria-label="Tabs">
           <button
             onClick={() => setActiveTab('body')}
             className={`${
               activeTab === 'body'
                 ? 'border-blue-500 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                : 'border-transparent text-neutral-600 hover:text-neutral-800 hover:border-neutral-200'
             } whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm`}
           >
             Body
@@ -70,7 +70,7 @@ export default function ResponseDisplay ({ response } : ResponseDisplayProps) {
             className={`${
               activeTab === 'headers'
                 ? 'border-blue-500 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                : 'border-transparent text-neutral-600 hover:text-neutral-800 hover:border-neutral-200'
             } whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm`}
           >
             Headers
@@ -80,12 +80,12 @@ export default function ResponseDisplay ({ response } : ResponseDisplayProps) {
 
       <div className="mt-4">
         {activeTab === 'body' && (
-          <pre className="bg-gray-100 p-4 rounded-md text-sm overflow-auto max-h-96 font-mono">
+          <pre className="bg-neutral-200 p-4 rounded[24px] text-neutral-900 text-sm overflow-auto max-h-96 font-mono">
             {formattedBody || '(No Body)'}
           </pre>
         )}
         {activeTab === 'headers' && (
-          <div className="bg-gray-100 p-4 rounded-md text-sm overflow-auto max-h-96 font-mono">
+          <div className="bg-neutral-200 p-4 rounded-[24px] text-neutral-900 text-sm overflow-auto max-h-96 font-mono">
             {Object.entries(response.headers).length > 0 ? (
               Object.entries(response.headers).map(([key, value]) => (
                 <p key={key} className="mb-1">
