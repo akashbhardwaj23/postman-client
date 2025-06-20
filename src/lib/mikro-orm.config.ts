@@ -1,22 +1,15 @@
-// src/lib/mikro-orm.config.ts
 import { Options } from '@mikro-orm/core';
-import { PostgreSqlDriver } from '@mikro-orm/postgresql'; // <--- NEW IMPORT
+import { PostgreSqlDriver } from '@mikro-orm/postgresql';
 
 import { HistoricalRequest } from './entities';
 
-console.log(process.env.DATABASE_URL)
+console.log(process.env.NEXT_PUBLIC_DATABASE_URL)
 
 const config: Options = {
-  driver: PostgreSqlDriver, // <--- NEW DRIVER
+  driver: PostgreSqlDriver,
 
-  // 2. Database Connection Details for PostgreSQL
-  // You can use a clientUrl (connection string) or individual properties.
-  // Using a clientUrl is often simpler, especially for deployment environments.
-  // IMPORTANT: Replace with your actual PostgreSQL connection details
   clientUrl:"postgresql://neondb_owner:npg_lD1AgybrGIC5@ep-misty-cell-a8rtczec-pooler.eastus2.azure.neon.tech/neondb?sslmode=require",
   entities: [HistoricalRequest],
-
-  // Debug Mode (Recommended for development)
   debug: process.env.NODE_ENV !== 'production',
 
   // Migrations Configuration
