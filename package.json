@@ -11,7 +11,7 @@
     "db:init": "mikro-orm migration:create --initial",
     "db:up": "mikro-orm migration:up",
     "db:fresh": "mikro-orm database:recreate --fresh --seed",
-    "vercel-deploy": "npm run db:up -- --run && npm run build"
+    "vercel-deploy": "npm run db:up --run && npm run build"
   },
   "mikro-orm": {
     "configPaths": [
