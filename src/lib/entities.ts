@@ -7,13 +7,13 @@ export class HistoricalRequest {
   id!: number;
 
   @Property()
-  method!: string; // GET, POST, PUT, DELETE
+  method!: string;
 
   @Property()
   url!: string;
 
   @Property({ type: 'json', nullable: true })
-  requestHeaders?: object; // Store as JSON string or object
+  requestHeaders?: object; 
 
   @Property({ type: 'text', nullable: true })
   requestBody?: string; // Store as raw text/JSON string
