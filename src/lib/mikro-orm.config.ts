@@ -8,7 +8,7 @@ import { HistoricalRequest } from './entities';
 const config: Options = {
   driver: PostgreSqlDriver,
 
-  clientUrl:"postgresql://neondb_owner:npg_lD1AgybrGIC5@ep-misty-cell-a8rtczec-pooler.eastus2.azure.neon.tech/neondb?sslmode=require",
+  clientUrl:process.env.NEXT_PUBLIC_DATABASE_URL ||"postgresql://neondb_owner:npg_lD1AgybrGIC5@ep-misty-cell-a8rtczec-pooler.eastus2.azure.neon.tech/neondb?sslmode=require",
   entities: [HistoricalRequest],
   debug: process.env.NODE_ENV !== 'production',
 

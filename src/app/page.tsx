@@ -1,4 +1,3 @@
-// src/app/page.tsx
 'use client';
 
 import { useState, useCallback, useEffect } from 'react';
@@ -201,7 +200,7 @@ export default function HomePage() {
       <div className="flex flex-col gap-6 mt-8 md:mt-0">
         <h2 className="text-2xl font-bold text-neutral-700 font-mono">Request History</h2>
         {isHistoryLoading ? (
-          <div className="bg-white p-6 rounded-lg shadow-md flex items-center justify-center min-h-[200px]">
+          <div className="bg-white p-6 rounded-[40px] shadow-md flex items-center justify-center min-h-[200px]">
             <p className="text-neutral-600">Loading history...</p>
           </div>
         ) : (

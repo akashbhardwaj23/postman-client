@@ -4,6 +4,7 @@ import { HistoricalRequest } from '@/lib/entities';
 import { wrap } from '@mikro-orm/core';
 
 export async function GET(req: NextRequest) {
+  console.log("error here")
   const orm = await getOrm();
   console.log("orm is here in request ", orm)
   if (!orm) {
