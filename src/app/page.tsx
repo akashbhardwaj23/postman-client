@@ -27,6 +27,7 @@ interface FullHistoricalRequestDetails {
 }
 
 export default function HomePage() {
+       // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [currentResponse, setCurrentResponse] = useState<any>(null);
   const [currentRequest, setCurrentRequest] = useState<{
     method: string;
@@ -85,10 +86,11 @@ export default function HomePage() {
           body: data.requestBody || '',
         });
 
-        let responseBodyForDisplay: any;
+             // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        let responseBodyForDisplay:any
         try {
             responseBodyForDisplay = data.responseBody ? JSON.parse(data.responseBody) : '';
-        } catch(e) {
+        } catch {
             responseBodyForDisplay = data.responseBody || '';
         }
 
@@ -133,7 +135,7 @@ export default function HomePage() {
         });
 
         handleHistoryRefetchRequired();
-
+             // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         console.error('Network or client-side error sending request:', error);
         setCurrentResponse({

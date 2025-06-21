@@ -55,7 +55,8 @@ export default function RequestForm({
       if (headers.trim()) {
         parsedHeaders = JSON.parse(headers);
       }
-    } catch (err) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch {
       setHeaderError('Invalid JSON in Headers');
       return;
     }
@@ -66,7 +67,8 @@ export default function RequestForm({
     ) {
       try {
         parsedBody = JSON.parse(body);
-      } catch (err) {
+             // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch {
         setBodyError('Invalid JSON in Body');
         return;
       }

@@ -35,10 +35,10 @@ export async function GET(req: NextRequest) {
       page,
       limit,
     });
-  } catch (error: any) {
+  } catch (error : unknown ) {
     console.error('API GET /requests error:', error);
     return NextResponse.json(
-      { message: 'Failed to fetch historical requests', error: error.message },
+      { message: 'Failed to fetch historical requests', error: error },
       { status: 500 }
     );
   }
@@ -76,9 +76,9 @@ export async function POST(req: NextRequest) {
       responseText = await externalResponse.text();
       responseStatus = externalResponse.status;
       responseHeaders = Object.fromEntries(externalResponse.headers.entries());
-    } catch (fetchError: any) {
+    } catch (fetchError: unknown) {
       console.error('External fetch error:', fetchError);
-      responseText = `Network Error: ${fetchError.message}`;
+      responseText = `Network Error: ${fetchError}`;
       responseStatus = 0;
     }
 
@@ -95,6 +95,7 @@ export async function POST(req: NextRequest) {
     try {
       responseBodyForClient = JSON.parse(responseText);
     } catch (e) {
+      console.log("Error is ", e)
       responseBodyForClient = responseText;
     }
 
@@ -106,10 +107,10 @@ export async function POST(req: NextRequest) {
       },
       { status: responseStatus || 200 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('API POST /requests error:', error);
     return NextResponse.json(
-      { message: 'Internal Server Error', error: error.message },
+      { message: 'Internal Server Error', error: error },
       { status: 500 }
     );
   }

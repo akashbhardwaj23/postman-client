@@ -7,15 +7,16 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
     req : NextRequest,
-    {params} : {params : {id : string}}
+    {params} : {params : Promise<{id : string}>}
 ){
+  const param = await params;
     const orm = await getOrm();
     if(!orm){
         return NextResponse.json({ message: 'Database not initialized' }, { status: 500 });
     }
     const em = orm.em.fork()
 
-    const id = parseInt(params.id)
+    const id = parseInt(param.id)
 
     if(isNaN(id)){
         return NextResponse.json({ message: 'Invalid request id' }, { status: 400 });
@@ -29,10 +30,10 @@ export async function GET(
         }
     
         return NextResponse.json(wrap(request).toObject());
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error('API GET /requests/[id] error:', error);
         return NextResponse.json(
-          { message: 'Failed to fetch historical request', error: error.message },
+          { message: 'Failed to fetch historical request', error: error },
           { status: 500 }
         );
       }
@@ -41,15 +42,17 @@ export async function GET(
 
 export async function DELETE(
     req: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
   ) {
+
+    const param = await params
     const orm = await getOrm();
     if (!orm) {
       return NextResponse.json({ message: 'Database not initialized' }, { status: 500 });
     }
     const em = orm.em.fork();
   
-    const id = parseInt(params.id);
+    const id = parseInt(param.id);
   
     if (isNaN(id)) {
       return NextResponse.json({ message: 'Invalid request ID' }, { status: 400 });
@@ -64,10 +67,10 @@ export async function DELETE(
   
       await em.removeAndFlush(requestToDelete);
       return NextResponse.json({ message: 'Request deleted successfully' });
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('API DELETE /requests/[id] error:', error);
       return NextResponse.json(
-        { message: 'Failed to delete historical request', error: error.message },
+        { message: 'Failed to delete historical request', error: error },
         { status: 500 }
       );
     }

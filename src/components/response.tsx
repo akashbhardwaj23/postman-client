@@ -6,6 +6,7 @@ interface ResponseDisplayProps {
   response: {
     statusCode: number;
     headers: object;
+         // eslint-disable-next-line @typescript-eslint/no-explicit-any
     body: any;
     isError?: boolean;
   } | null;
