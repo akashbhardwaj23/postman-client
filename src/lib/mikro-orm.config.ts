@@ -3,7 +3,7 @@ import { PostgreSqlDriver } from '@mikro-orm/postgresql';
 
 import { HistoricalRequest } from './entities';
 
-console.log(process.env.NEXT_PUBLIC_DATABASE_URL)
+// console.log(process.env.NEXT_PUBLIC_DATABASE_URL)
 
 const config: Options = {
   driver: PostgreSqlDriver,

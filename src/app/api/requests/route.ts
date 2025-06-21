@@ -5,10 +5,12 @@ import { wrap } from '@mikro-orm/core';
 
 export async function GET(req: NextRequest) {
   const orm = await getOrm();
+  console.log("orm is here in request ", orm)
   if (!orm) {
     return NextResponse.json({ message: 'Database not initialized' }, { status: 500 });
   }
   const em = orm.em.fork();
+  console.log("hi there here")
 
   const { searchParams } = new URL(req.url);
   const page = parseInt(searchParams.get('page') || '1');

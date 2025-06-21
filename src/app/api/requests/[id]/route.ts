@@ -10,7 +10,10 @@ export async function GET(
     {params} : {params : Promise<{id : string}>}
 ){
   const param = await params;
+  console.log("get function in id is called")
     const orm = await getOrm();
+
+    console.log("orm is here ", orm)
     if(!orm){
         return NextResponse.json({ message: 'Database not initialized' }, { status: 500 });
     }
